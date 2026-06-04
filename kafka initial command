@@ -1,0 +1,8 @@
+correct commands for Kafka 4.x on Windows:->
+cd C:\kafka_2.13-4.3.0
+
+bin\windows\kafka-storage.bat random-uuid
+
+bin\windows\kafka-storage.bat format --standalone -t <UUID> -c config\server.properties
+
+bin\windows\kafka-server-start.bat config\server.properties
