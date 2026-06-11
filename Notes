@@ -1,1 +1,92 @@
+You can define multiple Apache Kafka topics by creating multiple NewTopic beans.
+creating 10 topic:->
+@Configuration
+public class KafkaConfig {
 
+    @Bean
+    public NewTopic topic1() {
+        return TopicBuilder.name("topic-1")
+                .partitions(3)
+                .replicas(1)
+                .build();
+    }
+
+    @Bean
+    public NewTopic topic2() {
+        return TopicBuilder.name("topic-2")
+                .partitions(3)
+                .replicas(1)
+                .build();
+    }
+
+    @Bean
+    public NewTopic topic3() {
+        return TopicBuilder.name("topic-3")
+                .partitions(3)
+                .replicas(1)
+                .build();
+    }
+
+    // continue till topic10
+}
+But cleaner approach is:->
+@Configuration
+public class KafkaConfig {
+
+    @Bean
+    public KafkaAdmin.NewTopics topics() {
+        return new KafkaAdmin.NewTopics(
+
+                TopicBuilder.name("topic-1")
+                        .partitions(3)
+                        .replicas(1)
+                        .build(),
+
+                TopicBuilder.name("topic-2")
+                        .partitions(3)
+                        .replicas(1)
+                        .build(),
+
+                TopicBuilder.name("topic-3")
+                        .partitions(3)
+                        .replicas(1)
+                        .build()
+
+                // add remaining topics
+        );
+    }
+}
+
+Example:
+
+kafkaTemplate.send("topic-1", message);
+
+Here:
+
+"topic-1" → identifies where message should go
+Kafka broker routes the message to that topic
+
+we can send:->
+Only value
+kafkaTemplate.send("topic-name", message);
+Key + value
+kafkaTemplate.send("topic-name", "user-1", message);
+
+Key helps Kafka decide partition consistently.
+So:
+"topic-name" → Kafka topic
+"user-1" → key
+message → actual data/value
+
+Why key is used:
+
+Kafka uses the key to decide:
+
+which partition the message should go to
+
+Messages with same key usually go to same partition.
+
+Example:
+
+kafkaTemplate.send("orders", "customer-101", order1);
+kafkaTemplate.send("orders", "customer-101", order2);
