@@ -1,6 +1,8 @@
 package com.enduser.config;
 
 public class AppConstants {
-    public static final String LOCATION_TOPIC_NAME = "location-update-topic";
-    public static final String GROUP_ID = "group-1";
+    public static final String LOCATION_TOPIC_NAME = "locationadded";
+    public static final String LOCATION_TOPIC_CUSTOMER = "locationcustomer";
+    public static final String GROUP_ID = "group-2";
+    public static final String GROUP_CUSTOMER_ID = "group-3";
 }

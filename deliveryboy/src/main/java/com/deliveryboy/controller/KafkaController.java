@@ -1,8 +1,10 @@
 package com.deliveryboy.controller;
 
+import com.deliveryboy.dto.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.deliveryboy.service.KafkaService;
@@ -19,8 +21,17 @@ public class KafkaController {
 
     @PostMapping("/location")
     public ResponseEntity<String> sendLocation(){
-        String location = "(" +Math.round(Math.random())+","+Math.round(Math.random())+")";//sample example
-        kafkaService.sendMessage(location);
-        return ResponseEntity.ok(location);
+        String location = "location";
+        for(int i = 0;i<10000;i++) {
+            //sample example
+            kafkaService.sendMessage(location+":->"+i);
+        }
+        return ResponseEntity.ok("location sent successfully");
+    }
+
+    @PostMapping("/customer")
+    public ResponseEntity<String> sendCustomer(@RequestBody Customer customer){
+        kafkaService.sendCustomer(customer);
+        return ResponseEntity.ok("customer sent successfully");
     }
 }

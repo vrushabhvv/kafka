@@ -1,4 +1,4 @@
-package com.deliveryboy.dto;
+package com.enduser.dto;
 
 public class Customer {
     private String id;

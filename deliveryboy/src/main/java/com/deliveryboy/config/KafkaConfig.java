@@ -9,10 +9,14 @@ import static com.deliveryboy.config.AppConstants.LOCATION_TOPIC_NAME;
 
 @Configuration
 public class KafkaConfig {
+    //if we wont define this NewTopic then spring boot will create topic automatically with 1 partition
+    //for production it is advisable to configure manually in bean so that we will have more control
+    //if we dont want then we need to create topic with command where we can define partition count,replication factor,offset
+    //we can use either of these approach , at the end creation of topic should be our explicit.
     @Bean
     public NewTopic topic(){
         return TopicBuilder.name(LOCATION_TOPIC_NAME)
-//                .partitions(1)
+                .partitions(3)
 //                .replicas()
                 .build();
     }
