@@ -22,7 +22,7 @@ public class KafkaController {
     @PostMapping("/location")
     public ResponseEntity<String> sendLocation(){
         String location = "location";
-        for(int i = 0;i<10000;i++) {
+        for(int i = 0;i<100;i++) {
             //sample example
             kafkaService.sendMessage(location+":->"+i);
         }
@@ -33,5 +33,14 @@ public class KafkaController {
     public ResponseEntity<String> sendCustomer(@RequestBody Customer customer){
         kafkaService.sendCustomer(customer);
         return ResponseEntity.ok("customer sent successfully");
+    }
+
+    @PostMapping("/specificpartition")
+    public ResponseEntity<String> send(){
+        for(int i = 0;i<10;i++) {
+            //sample example
+            kafkaService.sendSpecificPartition("hi");
+        }
+        return ResponseEntity.ok("message sent successfully");
     }
 }

@@ -3,6 +3,7 @@ package com.enduser.config;
 import com.enduser.dto.Customer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.annotation.TopicPartition;
 import tools.jackson.databind.ObjectMapper;
 
 @Configuration
@@ -37,5 +38,12 @@ public class KafkaConfig {
     public void updateCustomer(String json){
         Customer customer = mapper.readValue(json,Customer.class);
         System.out.println("hi "+customer);
+    }
+
+    @KafkaListener(groupId = AppConstants.GROUP_ID,
+            topicPartitions = {@TopicPartition(topic = AppConstants.MESSAGE,partitions = {"2"})}
+    )
+    public void updateSpecificPartition(String message){
+        System.out.println("c4 "+message);
     }
 }

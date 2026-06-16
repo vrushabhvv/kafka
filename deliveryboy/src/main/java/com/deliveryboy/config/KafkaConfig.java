@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 
 import static com.deliveryboy.config.AppConstants.LOCATION_TOPIC_NAME;
+import static com.deliveryboy.config.AppConstants.MESSAGE;
 
 @Configuration
 public class KafkaConfig {
@@ -18,6 +19,14 @@ public class KafkaConfig {
         return TopicBuilder.name(LOCATION_TOPIC_NAME)
                 .partitions(3)
 //                .replicas()
+                .build();
+    }
+
+    @Bean
+    public NewTopic messageTopic(){
+        return TopicBuilder.name(MESSAGE)
+                .partitions(6)
+                .replicas(1)
                 .build();
     }
 
