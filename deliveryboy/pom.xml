@@ -76,7 +76,7 @@
             <version>4.2.1</version>
             <scope>test</scope>
         </dependency>
-<!--        kafka integration test-->
+        <!--        kafka integration test-->
 	</dependencies>
 
 	<build>
