@@ -7,4 +7,8 @@ public class AppConstants {
     public static final String GROUP_CUSTOMER_ID = "group-3";
 
     public static final String MESSAGE = "message";
+
+//    error handling topics
+    public static final String USER_TOPIC_1 = "user_topic_1";
+    public static final String GROUP_USER_ID = "group-4";
 }

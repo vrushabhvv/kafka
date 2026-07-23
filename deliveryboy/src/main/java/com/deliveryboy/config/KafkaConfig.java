@@ -5,8 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 
-import static com.deliveryboy.config.AppConstants.LOCATION_TOPIC_NAME;
-import static com.deliveryboy.config.AppConstants.MESSAGE;
+import static com.deliveryboy.config.AppConstants.*;
 
 @Configuration
 public class KafkaConfig {
@@ -26,6 +25,13 @@ public class KafkaConfig {
     public NewTopic messageTopic(){
         return TopicBuilder.name(MESSAGE)
                 .partitions(6)
+                .replicas(1)
+                .build();
+    }
+    @Bean
+    public NewTopic userTopic(){
+        return TopicBuilder.name(USER_TOPIC_1)
+                .partitions(3)
                 .replicas(1)
                 .build();
     }

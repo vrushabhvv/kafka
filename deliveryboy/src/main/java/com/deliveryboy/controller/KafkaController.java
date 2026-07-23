@@ -1,6 +1,7 @@
 package com.deliveryboy.controller;
 
 import com.deliveryboy.dto.Customer;
+import com.deliveryboy.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,5 +43,12 @@ public class KafkaController {
             kafkaService.sendSpecificPartition("hi");
         }
         return ResponseEntity.ok("message sent successfully");
+    }
+
+//    kafka error handling
+    @PostMapping("/user")
+    public ResponseEntity<String> sendUser(@RequestBody User user){
+        kafkaService.sendUser(user);
+        return ResponseEntity.ok("user sent successfully");
     }
 }
