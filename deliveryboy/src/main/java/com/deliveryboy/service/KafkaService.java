@@ -25,6 +25,8 @@ public class KafkaService {
     public boolean sendMessage(String message) {
 //        CompletableFuture<SendResult<String, String>> send =
         this.kafkaTemplate1.send(AppConstants.LOCATION_TOPIC_NAME, 1, null, message);
+        System.out.println("Hi hello");
+        System.out.println("fghjk");
 //        send.whenComplete((result,ex)->{
 //            if(ex==null){
 //                System.out.println("location updated,"+result);//result contains topic,partition,offset and metadata
@@ -48,7 +50,7 @@ public class KafkaService {
 
     public boolean sendSpecificPartition(String message) {
         this.kafkaTemplate1.send(AppConstants.MESSAGE, 2, null, message);
-        return true; 
+        return true;
     }
 
     //    example to error handling
