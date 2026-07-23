@@ -48,7 +48,7 @@ public class KafkaService {
 
     public boolean sendSpecificPartition(String message) {
         this.kafkaTemplate1.send(AppConstants.MESSAGE, 2, null, message);
-        return true;
+        return true; 
     }
 
     //    example to error handling
