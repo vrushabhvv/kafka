@@ -25,6 +25,7 @@ public class KafkaService {
     public boolean sendMessage(String message) {
 //        CompletableFuture<SendResult<String, String>> send =
         this.kafkaTemplate1.send(AppConstants.LOCATION_TOPIC_NAME, 1, null, message);
+        System.out.println("Hi hello");
 //        send.whenComplete((result,ex)->{
 //            if(ex==null){
 //                System.out.println("location updated,"+result);//result contains topic,partition,offset and metadata
