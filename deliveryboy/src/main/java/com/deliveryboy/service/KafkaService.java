@@ -21,6 +21,7 @@ public class KafkaService {
     public KafkaService(@Autowired KafkaTemplate<String, String> kafkaTemplate1) {
         this.kafkaTemplate1 = kafkaTemplate1;
         System.out.println("hello world");
+        System.out.println("sggfdjhgfdmnbhgf");
     }
 
     public boolean sendMessage(String message) {
