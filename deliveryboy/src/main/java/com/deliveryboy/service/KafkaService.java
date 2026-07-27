@@ -28,6 +28,7 @@ public class KafkaService {
         System.out.println("Hi hello");
         System.out.println("2ddd");
         System.out.println("23ddd");
+        System.out.println("24ddd");
 //        send.whenComplete((result,ex)->{
 //            if(ex==null){
 //                System.out.println("location updated,"+result);//result contains topic,partition,offset and metadata
