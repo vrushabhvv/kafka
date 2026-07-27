@@ -27,6 +27,7 @@ public class KafkaService {
         this.kafkaTemplate1.send(AppConstants.LOCATION_TOPIC_NAME, 1, null, message);
         System.out.println("Hi hello");
         System.out.println("2ddd");
+        System.out.println("23ddd");
 //        send.whenComplete((result,ex)->{
 //            if(ex==null){
 //                System.out.println("location updated,"+result);//result contains topic,partition,offset and metadata
