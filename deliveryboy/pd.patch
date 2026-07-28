@@ -1,0 +1,18 @@
+Subject: [PATCH] pd
+---
+Index: deliveryboy/src/main/java/com/deliveryboy/service/KafkaService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/deliveryboy/src/main/java/com/deliveryboy/service/KafkaService.java b/deliveryboy/src/main/java/com/deliveryboy/service/KafkaService.java
+--- a/deliveryboy/src/main/java/com/deliveryboy/service/KafkaService.java	(revision ebb96c3632b9f938aed9bd07be38c26c01db4ed9)
++++ b/deliveryboy/src/main/java/com/deliveryboy/service/KafkaService.java	(date 1785254412712)
+@@ -21,6 +21,7 @@
+     public KafkaService(@Autowired KafkaTemplate<String, String> kafkaTemplate1) {
+         this.kafkaTemplate1 = kafkaTemplate1;
+         System.out.println("2nd commit");
++        System.out.println("3rd commit");
+     }
+ 
+     public boolean sendMessage(String message) {
