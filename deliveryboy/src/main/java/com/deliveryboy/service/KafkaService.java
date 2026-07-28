@@ -20,6 +20,7 @@ public class KafkaService {
 
     public KafkaService(@Autowired KafkaTemplate<String, String> kafkaTemplate1) {
         this.kafkaTemplate1 = kafkaTemplate1;
+        System.out.println("2nd commit");
     }
 
     public boolean sendMessage(String message) {
