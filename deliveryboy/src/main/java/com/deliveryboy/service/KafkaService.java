@@ -20,12 +20,18 @@ public class KafkaService {
 
     public KafkaService(@Autowired KafkaTemplate<String, String> kafkaTemplate1) {
         this.kafkaTemplate1 = kafkaTemplate1;
-        System.out.println("Hi 1st commit");
-
+        System.out.println("2nd commit");
+        System.out.println("3rd commit");
+        System.out.println("4th commit");
     }
+
     public boolean sendMessage(String message) {
 //        CompletableFuture<SendResult<String, String>> send =
         this.kafkaTemplate1.send(AppConstants.LOCATION_TOPIC_NAME, 1, null, message);
+        System.out.println("Hi hello");
+        System.out.println("2ddd");
+        System.out.println("23ddd");
+        System.out.println("43ddd");
 //        send.whenComplete((result,ex)->{
 //            if(ex==null){
 //                System.out.println("location updated,"+result);//result contains topic,partition,offset and metadata
